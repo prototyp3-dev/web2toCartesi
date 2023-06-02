@@ -1,45 +1,45 @@
 
 group "default" {
-  targets = ["dapp", "server", "console"]
+  targets = ["server", "console"]
 }
 
-# crossenv toolchain for python dapps
-target "toolchain-python" {
-  context = "./std-rootfs"
-  target  = "toolchain-python"
-  tags    = ["cartesi/toolchain-python"]
+target "wrapped" {
+  context = "./docker-riscv"
+  target = "wrapped-stage"
+  contexts = {
+    dapp = "target:dapp"
+  }
 }
 
 target "fs" {
-  context = "./std-rootfs"
+  context = "./docker-riscv"
   target  = "fs-stage"
   contexts = {
-    dapp = "target:dapp"
+    wrapped = "target:wrapped"
   }
 }
 
 target "server" {
-  context = "./std-rootfs"
+  context = "./docker-riscv"
   target  = "server-stage"
   contexts = {
-    dapp = "target:dapp"
+    fs = "target:fs"
   }
 }
 
 target "console" {
-  context = "./std-rootfs"
+  context = "./docker-riscv"
   target  = "console-stage"
   contexts = {
-    dapp = "target:dapp"
+    fs = "target:fs"
   }
 }
 
 target "machine" {
-  context = "./std-rootfs"
+  context = "./docker-riscv"
   target  = "machine-stage"
   contexts = {
-    dapp = "target:dapp"
+    fs = "target:fs"
   }
 }
-
 

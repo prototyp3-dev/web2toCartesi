@@ -11,20 +11,28 @@
 # CONDITIONS OF ANY KIND, either express or implied. See the License for the
 # specific language governing permissions and limitations under the License.
 
-set -e
+# note: to run as root, call this script with argument `--run-as-root'`
 
-MACHINE_DIR=$1
-ROLLUP_HTTP_SERVER_PORT=5004
+unset CM_OPTS
+while [ $# -gt 0 ]; do
+    arg="$1"
+    shift 1
+
+    case "$arg" in
+        --run-as-root)
+            CM_OPTS+=--append-rom-bootargs='single=yes'
+            ;;
+        *)
+            echo invalid option "$arg"
+            ;;
+    esac
+done
 
 cartesi-machine \
-    --assert-rolling-template \
     --ram-length=128Mi \
     --rollup \
-    --flash-drive=label:dapp,filename:dapp.ext2 \
-    --flash-drive=label:root,filename:rootfs.ext2 \
+    --flash-drive=label:root,filename:dapp.ext2 \
     --ram-image=linux.bin \
     --rom-image=rom.bin \
-    --store=$MACHINE_DIR \
-    -- "cd /mnt/dapp; \
-        ROLLUP_HTTP_SERVER_URL=\"http://127.0.0.1:$ROLLUP_HTTP_SERVER_PORT\" \
-        ./entrypoint.sh"
+    -i $CM_OPTS \
+    -- "/bin/sh"

@@ -12,5 +12,6 @@
 # specific language governing permissions and limitations under the License.
 
 set -e
+export PATH="/opt/venv/bin:$PATH"
 python3 create_schema.py # create database
 rollup-init python3 twitter.py
