@@ -1,5 +1,9 @@
 # Web3 Twitter
 
+```
+Cartesi Rollups version: 0.8.x
+```
+
 The Web 3 implementation of the Twitter-like application utilizes a Python Flask Server, defined in the `front_end/server.py` file, to serve the front-end files (HTML, CSS, JS) through an HTTPS GET route. The `front_end/twitter_db.py` is an auxiliary module that encapsulates the database access exposing only an interface of simple functions to access it. In this version, the purpose of the Flask Server is only to serve the front-end files since now the database and the auxiliary module will be inside Cartesi Machine. The database functions defined in the `front_end/twitter_db.py` are executed through inspectState, for functions that don't alter the machine's state and addInput, for the ones that do. To learn more about inspectState and addInput, check out the documentation of the [Front-end APIs](https://docs.cartesi.io/cartesi-rollups/http-api/#front-end-apis).
 
 This example, contrary to other `rollups-examples`, does not use shared resources from the main directory, and as such, the commands for building, running, and deploying it are slightly different.
