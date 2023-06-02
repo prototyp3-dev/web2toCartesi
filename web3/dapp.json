@@ -1,0 +1,5 @@
+{
+  "fs": {
+    "files": ["twitter.py", "twitter_db.py", "create_schema.py", "seed.py", "entrypoint.sh"]
+  }
+}
