@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="static/assets/bootstrap5.2.3/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- JavaScript Bundle with Popper -->
+    <script src="static/assets/bootstrap5.2.3/bootstrap.bundle.min.js"></script>
+    
+    <!-- Bootstrap Icons -->
+    <link href="static/assets/bootstrap-icons-1.10.3/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- AJAX -->
+    <script src="static/assets/jquery-3.6.3/jquery.min.js"></script>
+
+    <!-- CSS -->
+    <link href="static/css/style.css" rel="stylesheet">
+
+    <!-- Select-Search (tom-select) -->
+    <link href="static/assets/tom-select2.0.0/tom-select.css" rel="stylesheet">
+    <script src="static/assets/tom-select2.0.0/tom-select.complete.min.js"></script>
+
+
+    <title>Web2 Twitter Demo</title>
+</head>
+
+
+<!-- Dynamic Modal -->
+<div class="modal fade" id="dynamicModal" tabindex="-1" role="dialog" aria-labelledby="dynamicModal" aria-hidden="true">
+    <div id="dynamicModalDialog" class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div id="dynamicModalHeader" class="modal-header d-block border-0">
+            
+            </div>
+
+            <!-- BEGIN FORM -->
+            <form>
+
+                <!-- BEGIN MODAL BODY -->
+                <div id="dynamicModalBody" class="modal-body">
+
+                <!-- END MODAL BODY -->
+                </div>
+                
+                <div id="dynamicModalFooter" class="modal-footer border-0">
+            
+                </div>
+            
+            <!-- END FORM -->                 
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<body style="background-color: floralwhite;">
+    <div class="container-fluid py-2 row">
+
+        <div id="user" class="col-1 offset-2 text-center position-fixed">
+        </div>
+
+        <div class="col-5 offset-3 border-start border-end">
+            <h1 class="text-center">"Twitter" Example</h1>
+            
+            <div id="user_tweet" class="row px-3 visually-hidden">
+                <span class="col-2 profile-emoji"></span>
+                
+                <div class="col">
+                    <div>
+                        <span>You</span>
+                    </div>
+
+                    <div>
+                        <textarea id="feed_post_tweet_content" type="text" class="form-control mb-2" placeholder="Say something?"
+                            oninput="validate_tweet_content_on_input('feed_post_tweet_char_counter', 'feed_post_tweet_btn')"></textarea>
+                        <span id="feed_post_tweet_char_counter">0</span>
+                        <button id="feed_post_tweet_btn" type="button" class="btn btn-outline-dark float-end" onclick="static_post_tweet_form()">Tweet</button>
+                    </div>
+                </div>
+            </div>
+            
+            <ul id="feed" class="list-group list-group-flush">
+
+            </ul>
+
+            <div id="fetching-tweets" class="my-2 text-center visually-hidden">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>    
+            </div>
+
+        </div>
+
+        <!-- <div class="col-2 position-fixed offset-8 border text-center">
+            <h2>
+                Empty
+            </h2>
+        </div> -->
+    </div>
+</body>
+</html>
+
+<script src="static/js/control.js"></script>
+<script src="static/js/user.js"></script>
+<script src="static/js/forms.js"></script>
+<script>
+    home_page()
+</script>

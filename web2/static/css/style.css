@@ -1,0 +1,39 @@
+.clickable-row {
+    cursor:pointer;
+    background-color: floralwhite;
+}
+
+.clickable-row:hover {
+    background-color: rgb(255, 255, 200);
+}
+
+.retweeted {
+    border-radius: 25px;
+    background-color: aliceblue;
+}
+
+p {
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+#user>div {
+    word-break: break-all;
+}
+
+.emoji-cell {
+    font-size: 16px;
+    text-align: center;
+    max-width: 32px;
+}
+.emoji-cell:hover {
+    cursor: pointer;
+    border-bottom: 1px solid gray;
+}
+
+.profile-emoji {
+    font-size: 60px;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+}
